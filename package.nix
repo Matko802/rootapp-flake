@@ -18,6 +18,7 @@ appimageTools.wrapType2 {
       --replace 'Exec=Root' 'Exec=rootapp' \
       --replace 'Icon=Root' 'Icon=rootapp' \
       --replace 'StartupWMClass=Root' 'StartupWMClass=rootapp'
+    grep -q '^MimeType=' $out/share/applications/rootapp.desktop || printf '\nMimeType=x-scheme-handler/rootapp;\n' >> $out/share/applications/rootapp.desktop
     mkdir -p $out/share/icons/hicolor/512x512/apps $out/share/pixmaps
     cp ${appimageContents}/Root.png $out/share/icons/hicolor/512x512/apps/rootapp.png
     cp ${appimageContents}/Root.png $out/share/pixmaps/rootapp.png
