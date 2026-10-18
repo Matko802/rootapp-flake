@@ -13,11 +13,11 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
   extraInstallCommands = ''
-    install -m 444 -D ${appimageContents}/Root.desktop $out/share/applications/rootapp.desktop
-    substituteInPlace $out/share/applications/rootapp.desktop \
+    install -m 444 -D ${appimageContents}/Root.desktop $out/share/applications/Root.desktop
+    substituteInPlace $out/share/applications/Root.desktop \
       --replace 'Exec=Root' 'Exec=rootapp %u' \
       --replace 'Icon=Root' 'Icon=rootapp'
-    grep -q '^MimeType=' $out/share/applications/rootapp.desktop || printf '\nMimeType=x-scheme-handler/rootapp;\n' >> $out/share/applications/rootapp.desktop
+    grep -q '^MimeType=' $out/share/applications/Root.desktop || printf '\nMimeType=x-scheme-handler/rootapp;\n' >> $out/share/applications/Root.desktop
     mkdir -p $out/share/icons/hicolor/512x512/apps $out/share/pixmaps
     cp ${appimageContents}/Root.png $out/share/icons/hicolor/512x512/apps/rootapp.png
     cp ${appimageContents}/Root.png $out/share/pixmaps/rootapp.png
