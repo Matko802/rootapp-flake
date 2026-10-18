@@ -15,9 +15,8 @@ appimageTools.wrapType2 {
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/Root.desktop $out/share/applications/rootapp.desktop
     substituteInPlace $out/share/applications/rootapp.desktop \
-      --replace 'Exec=Root' 'Exec=rootapp' \
-      --replace 'Icon=Root' 'Icon=rootapp' \
-      --replace 'StartupWMClass=Root' 'StartupWMClass=rootapp'
+      --replace 'Exec=Root' 'Exec=rootapp %u' \
+      --replace 'Icon=Root' 'Icon=rootapp'
     grep -q '^MimeType=' $out/share/applications/rootapp.desktop || printf '\nMimeType=x-scheme-handler/rootapp;\n' >> $out/share/applications/rootapp.desktop
     mkdir -p $out/share/icons/hicolor/512x512/apps $out/share/pixmaps
     cp ${appimageContents}/Root.png $out/share/icons/hicolor/512x512/apps/rootapp.png
